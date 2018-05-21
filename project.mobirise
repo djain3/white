@@ -1,0 +1,377 @@
+{
+  "settings": {
+    "name": "Site-05-16_1742",
+    "currentPage": "index.html",
+    "theme": {
+      "name": "whiteamp",
+      "title": "WhiteAMP",
+      "styling": {
+        "primaryColor": "#78BBFB",
+        "secondaryColor": "#CCE6FE",
+        "successColor": "#BFA3F0",
+        "infoColor": "#3977AA",
+        "warningColor": "#f94176",
+        "dangerColor": "#501e89",
+        "mainFont": "Roboto",
+        "display1Font": "Didact Gothic",
+        "display1Size": "6",
+        "display2Font": "Didact Gothic",
+        "display2Size": 4.2,
+        "display5Font": "Didact Gothic",
+        "display5Size": 2,
+        "display6Font": "Didact Gothic",
+        "display6Size": 1.2,
+        "display7Font": "Didact Gothic",
+        "display7Size": 1,
+        "display4Font": "Didact Gothic",
+        "display4Size": 0.8,
+        "isRoundedButtons": false
+      },
+      "additionalSetColors": [
+        "#9dc7d3"
+      ]
+    },
+    "path": "@PROJECT_PATH@",
+    "versionFirst": "4.7.3",
+    "uniqCompNum": 551,
+    "versionPublish": "4.7.3",
+    "screenshot": "screenshot.png"
+  },
+  "pages": {
+    "index.html": {
+      "settings": {
+        "main": true,
+        "title": "Home",
+        "meta_descr": "",
+        "header_custom": "",
+        "footer_custom": "",
+        "html_before": ""
+      },
+      "components": [
+        {
+          "_styles": {
+            "padding-top": "(@paddingTop * 15px)",
+            "padding-bottom": "(@paddingBottom * 15px)",
+            "background-color": "@bg",
+            ".mbr-section-title": {
+              "margin-bottom": "3.5rem"
+            },
+            ".mbr-section-subtitle, .mbr-text": {
+              "margin-bottom": "1rem"
+            },
+            ".mbr-section-btn": {
+              "margin-top": "2.5rem"
+            },
+            "& when (@bgFigures)": {
+              "& when (@figure = '1')": {
+                ".figure": {
+                  "background-color": "@circleColor",
+                  "width": "(@circleRadius * 1px)",
+                  "height": "(@circleRadius * 1px)",
+                  "border-radius": "50%",
+                  "position": "absolute",
+                  "top": "(@circlePosX * 1%)",
+                  "left": "(@circlePosY * 1%)",
+                  "z-index": "11"
+                },
+                "& when (@overflow)": {
+                  "overflow": "hidden"
+                }
+              },
+              "& when (@figure = '2')": {
+                ".figure": {
+                  "background-color": "@rectColor",
+                  "position": "absolute",
+                  "left": "0",
+                  "top": "0",
+                  "width": "(@sizeRect * 1%)",
+                  "height": "100%",
+                  "& when (@invertRect)": {
+                    "left": "auto",
+                    "right": "0"
+                  },
+                  "& when (@directRect)": {
+                    "width": "100%",
+                    "height": "(@sizeRect * 1%)",
+                    "& when (@invertRect)": {
+                      "top": "auto",
+                      "bottom": "0"
+                    }
+                  }
+                }
+              },
+              "& when (@figure = '3')": {
+                ".figure": {
+                  "background": "linear-gradient(@rotateAngle * 1deg, @diagonalColor (@sizeDiagonal * 1%), rgba(0, 0, 0, 0) (@sizeDiagonal * 1%), rgba(0, 0, 0, 0) 100%)",
+                  "position": "absolute",
+                  "left": "0",
+                  "top": "0",
+                  "width": "100%",
+                  "height": "100%"
+                }
+              }
+            },
+            ".container": {
+              "display": "flex"
+            },
+            ".image": {
+              "height": "(@imgHeight * 1px)",
+              "width": "100%",
+              "amp-img, img": {
+                "height": "100%",
+                "width": "100%",
+                "object-fit": "cover"
+              }
+            },
+            ".btn-with-line": {
+              "display": "inline-flex",
+              "align-items": "center",
+              "&:before": {
+                "transition": "width 1s ease",
+                "content": "''",
+                "display": "inline-block",
+                "width": "35px",
+                "height": "1px",
+                "margin-right": "15px",
+                "background": "rgba(0, 0, 0, 0.15)"
+              },
+              "&:hover": {
+                "&:before": {
+                  "width": "60px",
+                  "transform-origin": "left",
+                  "background": "black"
+                }
+              }
+            },
+            ".text-block": {
+              "display": "flex",
+              "justify-content": "center",
+              "flex-direction": "column"
+            },
+            "amp-img, .text-block": {
+              "z-index": "22"
+            }
+          },
+          "_name": "header1",
+          "_customHTML": "<section class=\"header1\" group=\"Headers\" plugins=\"amp-main\">\n\t<mbr-parameters>\n\t<!-- Block parameters controls (Blue \"Gear\" panel) -->\n\t<input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n\t<input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n\t<!-- Position -->\n\t<input type=\"range\" inline=\"\" title=\"Image Height\" name=\"imgHeight\" min=\"300\" max=\"1200\" step=\"50\" value=\"600\">\n\t<!-- Show/Hide params -->\n\t<input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked=\"\">\n\t<input type=\"checkbox\" title=\"Show Subtitle\" name=\"showSubTitle\" checked=\"\">\n\t<input type=\"checkbox\" title=\"Show Text\" name=\"showText\">\n\t<input type=\"checkbox\" title=\"Show Buttons\" name=\"showButtons\" checked=\"\">\n\t<!-- Background -->\n\t<input type=\"color\" title=\"Background Color\" name=\"bg\" value=\"#ffffff\">\n\t<input type=\"checkbox\" title=\"Show BG Figures\" name=\"bgFigures\" checked=\"\">\n\t<!-- Select Figure -->\n\t<select title=\"Select Figure:\" name=\"figure\" condition=\"bgFigures\">\n\t\t<option value=\"1\" selected=\"\">Circle</option>\n\t\t<option value=\"2\">Rectangle</option>\n\t\t<option value=\"3\">Diagonal</option>\n\t</select>\n\t<!-- Figure Circle -->\n\t<input type=\"range\" inline=\"\" title=\"Circle Position X\" name=\"circlePosX\" min=\"-100\" max=\"100\" step=\"5\" value=\"-40\" condition=\"figure==1\">\n\t<input type=\"range\" inline=\"\" title=\"Circle Position Y\" name=\"circlePosY\" min=\"-100\" max=\"100\" step=\"5\" value=\"40\" condition=\"figure==1\">\n\t<input type=\"range\" inline=\"\" title=\"Circle Radius\" name=\"circleRadius\" min=\"100\" max=\"1600\" step=\"50\" value=\"1200\" condition=\"figure==1\">\n\t<input type=\"color\" title=\"Circle Color\" name=\"circleColor\" value=\"#9dc7d3\" condition=\"figure==1\">\n\t<input type=\"checkbox\" title=\"Overflow Hidden\" name=\"overflow\" condition=\"figure==1\" checked=\"\">\n\t<!-- Figure Rectangle -->\n\t<input type=\"checkbox\" title=\"Width/Height\" name=\"directRect\" condition=\"figure==2\" checked=\"\">\n\t<input type=\"checkbox\" title=\"Invert\" name=\"invertRect\" condition=\"figure==2\" checked=\"\">\n\t<input type=\"range\" inline=\"\" title=\"Size\" name=\"sizeRect\" min=\"0\" max=\"100\" step=\"5\" value=\"50\" condition=\"figure==2\">\n\t<input type=\"color\" title=\"Rectangle Color\" name=\"rectColor\" value=\"#9dc7d3\" condition=\"figure==2\">\n\t<!-- Figure Diagonal -->\n\t<input type=\"range\" inline=\"\" title=\"Rotate Angle\" name=\"rotateAngle\" min=\"0\" max=\"360\" step=\"5\" value=\"45\" condition=\"figure==3\">\n\t<input type=\"checkbox\" title=\"Invert\" name=\"invertDiagonal\" condition=\"figure==3\" checked=\"\">\n\t<input type=\"range\" inline=\"\" title=\"Size\" name=\"sizeDiagonal\" min=\"0\" max=\"100\" step=\"5\" value=\"50\" condition=\"figure==3\">\n\t<input type=\"color\" title=\"Diagonal Color\" name=\"diagonalColor\" value=\"#9dc7d3\" condition=\"figure==3\">\n\t<!-- End block parameters -->\n\t</mbr-parameters>\n\t<div class=\"figure\"></div>\n\t<div class=\"container\">\n\t\t<div class=\"mbr-col-sm-12 mbr-col-lg-6 mbr-col-md-6 text-block\">\n\t\t\t<h1 class=\"mbr-section-title mbr-fonts-style mbr-bold mbr-black\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-section-title\" mbr-if=\"showTitle\">\n\t\t\tWhiteAMP\n\t\t\t</h1>\n\t\t\t<h3 class=\"mbr-section-subtitle mbr-fonts-style mbr-black mbr-bold\" mbr-theme-style=\"display-5\" data-app-selector=\".mbr-section-subtitle\" mbr-if=\"showSubTitle\">\n\t\t\tAccelerate your site with AMP\n\t\t\t</h3>\n\t\t\t<p class=\"mbr-fonts-style mbr-text mbr-black\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-text, .mbr-section-btn\" mbr-if=\"showText\">\n\t\t\t\tFull width intro with adjustable height, background image. Click any text to edit or style it.\n\t\t\t</p>\n\t\t\t<div mbr-buttons=\"\" class=\"mbr-section-btn\" mbr-theme-style=\"display-4\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\"><a class=\"btn-with-line text-black mbr-bold\" href=\"https://mobirise.com\">\n\t\t\t\t\t<span>\n\t\t\t\t\t\tLEARN MORE\n\t\t\t\t\t</span>\n\t\t\t\t</a></div>\n\t\t</div>\n\t\t<div class=\"mbe-col-lg-6 mbr-col-md-6 mbr-col-sm-12\">\n\t\t\t<div class=\"image\">\n\t\t\t\t<amp-img src=\"@PROJECT_PATH@/assets/images/background2.jpg\" layout=\"responsive\" width=\"903.147853736089\" height=\"600\" alt=\"Mobirise\">\n\t\t\t\t\t<div placeholder=\"\">\n\t\t\t\t\t\t<div class=\"mobirise-spinner\">\n\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/background2.jpg\" alt=\"Mobirise\">\n\t\t\t\t</amp-img>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</section>",
+          "_cid": "qSHk21LLUD",
+          "_anchor": "header1-f8",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        },
+        {
+          "_styles": {
+            "padding-top": "(@paddingTop * 15px)",
+            "padding-bottom": "(@paddingBottom * 15px)",
+            "background-color": "@bg",
+            ".card": {
+              "@media (max-width: 992px)": {
+                "margin-bottom": "2rem"
+              }
+            },
+            ".image": {
+              "overflow": "hidden",
+              "z-index": "0",
+              "border-radius": "10px",
+              "position": "relative",
+              "height": "400px",
+              "width": "100%",
+              "amp-img, img": {
+                "height": "100%",
+                "width": "100%",
+                "object-fit": "cover"
+              },
+              ".text-block": {
+                "z-index": "11",
+                "position": "absolute",
+                "bottom": "0",
+                "left": "0",
+                "padding": "2.5rem",
+                "h4,h5": {
+                  "margin-bottom": "0rem"
+                }
+              },
+              "transition": "all 0.5s",
+              "amp-img": {
+                "transition": "all 0.5s",
+                "&:after": {
+                  "z-index": "1",
+                  "pointer-events": "none",
+                  "content": "''",
+                  "position": "absolute",
+                  "left": "0",
+                  "top": "0",
+                  "width": "100%",
+                  "height": "100%",
+                  "background-color": "#000000",
+                  "opacity": "0.3",
+                  "transition": "0.5s opacity ease-in-out"
+                },
+                "&:before": {
+                  "position": "absolute",
+                  "top": "0",
+                  "left": "0",
+                  "content": "''",
+                  "display": "inline-block",
+                  "background": "transparent",
+                  "transition": "all 0.5s ease",
+                  "height": "100%",
+                  "width": "100%",
+                  "opacity": "0",
+                  "pointer-events": "none",
+                  "z-index": "2"
+                }
+              },
+              "&:hover": {
+                "transform": "scale(1.02)",
+                "-moz-box-shadow": "0 10px 25px rgba(0, 0, 0, 0.4)",
+                "-webkit-box-shadow": "0 10px 25px rgba(0, 0, 0, 0.4)",
+                "box-shadow": "0 10px 25px rgba(0, 0, 0, 0.4)",
+                "amp-img": {
+                  "&:before": {
+                    "opacity": "0.8",
+                    "-ms-filter": "\"progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#1471da, endColorstr=#1C85FB)\"",
+                    "background": "linear-gradient(45deg, @hg1color, @hg2color)"
+                  }
+                }
+              }
+            }
+          },
+          "_name": "features1",
+          "_customHTML": "<section class=\"features1\" group=\"Headers\" plugins=\"amp-main\">\n\t<mbr-parameters>\n\t<!-- Block parameters controls (Blue \"Gear\" panel) -->\n\t\n\t<input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n\t<input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n\n\t<input type=\"color\" title=\"Hover Gradient Color 1\" name=\"hg1color\" value=\"#cce6fe\">\n\t<input type=\"color\" title=\"Hover Gradient Color 2\" name=\"hg2color\" value=\"#134b7a\">\n\n\t<input type=\"color\" title=\"Background Color\" name=\"bg\" value=\"#ffffff\">\n\t<!-- End block parameters -->\n\t</mbr-parameters>\n\t<div class=\"container\">\n\t\t<div class=\"mbr-row\">\n\t\t\t<div class=\"mbr-col-lg-4 mbr-col-md-12 mbr-col-sm-12 card\">\n\t\t\t\t<div class=\"image\">\n\t\t\t\t\t<div class=\"text-block\">\n\t\t\t\t\t\t<h5 class=\"mbr-section-subtitle mbr-fonts-style mbr-white mbr-bold\" mbr-theme-style=\"display-6\" data-app-selector=\".mbr-section-subtitle\">\n\t\t\t\t\t\tAccelerate your site with AMP\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t<h4 class=\"mbr-section-title mbr-fonts-style mbr-bold mbr-white\" mbr-theme-style=\"display-5\" data-app-selector=\".mbr-section-title\">\n\t\t\t\t\t\tWhiteAMP\n\t\t\t\t\t\t</h4>\n\t\t\t\t\t</div>\n\t\t\t\t\t<amp-img src=\"@PROJECT_PATH@/assets/images/img1.jpg\" layout=\"responsive\" width=\"599.5316159250586\" height=\"400\" alt=\"Mobirise\">\n\t\t\t\t\t\t<div placeholder=\"\">\n\t\t\t\t\t\t\t<div class=\"mobirise-spinner\">\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/img1.jpg\" alt=\"Mobirise\">\n\t\t\t\t\t</amp-img>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"mbr-col-lg-4 mbr-col-md-12 mbr-col-sm-12 card\">\n\t\t\t\t<div class=\"image\">\n\t\t\t\t\t<div class=\"text-block\">\n\t\t\t\t\t\t<h5 class=\"mbr-section-subtitle mbr-fonts-style mbr-white mbr-bold\" mbr-theme-style=\"display-6\" data-app-selector=\".mbr-section-subtitle\">\n\t\t\t\t\t\tAccelerate your site with AMP\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t<h4 class=\"mbr-section-title mbr-fonts-style mbr-bold mbr-white\" mbr-theme-style=\"display-5\" data-app-selector=\".mbr-section-title\">\n\t\t\t\t\t\tWhiteAMP\n\t\t\t\t\t\t</h4>\n\t\t\t\t\t</div>\n\t\t\t\t\t<amp-img src=\"@PROJECT_PATH@/assets/images/img2.jpeg\" layout=\"responsive\" width=\"632.0987654320987\" height=\"400\" alt=\"Mobirise\">\n\t\t\t\t\t\t<div placeholder=\"\">\n\t\t\t\t\t\t\t<div class=\"mobirise-spinner\">\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/img2.jpeg\" alt=\"Mobirise\">\n\t\t\t\t\t</amp-img>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"mbr-col-lg-4 mbr-col-md-12 mbr-col-sm-12 card\">\n\t\t\t\t<div class=\"image\">\n\t\t\t\t\t<div class=\"text-block\">\n\t\t\t\t\t\t<h5 class=\"mbr-section-subtitle mbr-fonts-style mbr-white mbr-bold\" mbr-theme-style=\"display-6\" data-app-selector=\".mbr-section-subtitle\">\n\t\t\t\t\t\tAccelerate your site with AMP\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t<h4 class=\"mbr-section-title mbr-fonts-style mbr-bold mbr-white\" mbr-theme-style=\"display-5\" data-app-selector=\".mbr-section-title\">\n\t\t\t\t\t\tWhiteAMP\n\t\t\t\t\t\t</h4>\n\t\t\t\t\t</div>\n\t\t\t\t\t<amp-img src=\"@PROJECT_PATH@/assets/images/img3.jpeg\" layout=\"responsive\" width=\"600\" height=\"400\" alt=\"Mobirise\">\n\t\t\t\t\t\t<div placeholder=\"\">\n\t\t\t\t\t\t\t<div class=\"mobirise-spinner\">\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/img3.jpeg\" alt=\"Mobirise\">\n\t\t\t\t\t</amp-img>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</section>",
+          "_cid": "qSHlULASkj",
+          "_anchor": "features1-fa",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        },
+        {
+          "_styles": {
+            "padding-top": "(@paddingTop * 15px)",
+            "padding-bottom": "(@paddingBottom * 15px)",
+            "background-color": "@bg",
+            "& when (@bgFigures)": {
+              "& when (@figure = '1')": {
+                ".figure": {
+                  "background-color": "@circleColor",
+                  "width": "(@circleRadius * 1px)",
+                  "height": "(@circleRadius * 1px)",
+                  "border-radius": "50%",
+                  "position": "absolute",
+                  "top": "(@circlePosX * 1%)",
+                  "left": "(@circlePosY * 1%)",
+                  "z-index": "11"
+                },
+                "& when (@overflow)": {
+                  "overflow": "hidden"
+                }
+              },
+              "& when (@figure = '2')": {
+                ".figure": {
+                  "background-color": "@rectColor",
+                  "position": "absolute",
+                  "left": "0",
+                  "top": "0",
+                  "width": "(@sizeRect * 1%)",
+                  "height": "100%",
+                  "& when (@invertRect)": {
+                    "left": "auto",
+                    "right": "0"
+                  },
+                  "& when (@directRect)": {
+                    "width": "100%",
+                    "height": "(@sizeRect * 1%)",
+                    "& when (@invertRect)": {
+                      "top": "auto",
+                      "bottom": "0"
+                    }
+                  }
+                }
+              },
+              "& when (@figure = '3')": {
+                ".figure": {
+                  "background": "linear-gradient(@rotateAngle * 1deg, @diagonalColor (@sizeDiagonal * 1%), rgba(0, 0, 0, 0) (@sizeDiagonal * 1%), rgba(0, 0, 0, 0) 100%)",
+                  "position": "absolute",
+                  "left": "0",
+                  "top": "0",
+                  "width": "100%",
+                  "height": "100%"
+                }
+              }
+            },
+            ".image": {
+              "height": "(@imgHeight * 1px)",
+              "width": "100%",
+              "amp-img, img": {
+                "height": "100%",
+                "width": "100%",
+                "object-fit": "cover"
+              },
+              "@media (max-width: 992px)": {
+                "height": "100%"
+              }
+            },
+            ".btn-with-line": {
+              "display": "inline-flex",
+              "align-items": "center",
+              "&:before": {
+                "transition": "width 1s ease",
+                "content": "''",
+                "display": "inline-block",
+                "width": "35px",
+                "height": "1px",
+                "margin-right": "15px",
+                "background": "rgba(0, 0, 0, 0.15)"
+              },
+              "&:hover": {
+                "&:before": {
+                  "width": "60px",
+                  "transform-origin": "left",
+                  "background": "black"
+                }
+              }
+            },
+            ".mbr-row": {
+              "> *": {
+                "padding": "0 2rem"
+              }
+            },
+            ".text-block": {
+              "display": "flex",
+              "justify-content": "center",
+              "flex-direction": "column"
+            },
+            ".video-block": {
+              "margin": "auto",
+              "width": "100%",
+              "amp-youtube": {
+                "-webkit-box-shadow": "0 12px 20px rgba(0, 0, 0, 0.12)",
+                "box-shadow": "0 12px 20px rgba(0, 0, 0, 0.12)"
+              }
+            },
+            ".mbr-section-subtitle": {
+              "margin-bottom": "2.5rem"
+            },
+            ".mbr-section-title": {
+              "margin-bottom": "1.5rem"
+            },
+            ".mbr-section-btn": {
+              "margin-top": "2rem"
+            }
+          },
+          "_name": "about1",
+          "_customHTML": "<section class=\"header1\" group=\"Headers\" plugins=\"amp-main\">\n\t<mbr-parameters>\n\t<!-- Block parameters controls (Blue \"Gear\" panel) -->\n\t<input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"10\">\n\t<input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"10\">\n\t<!-- Position -->\n\t<input type=\"range\" inline=\"\" title=\"Image Height\" name=\"imgHeight\" min=\"300\" max=\"1200\" step=\"50\" value=\"600\">\n\t<!-- Show/Hide params -->\n\t<input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked=\"\">\n\t<input type=\"checkbox\" title=\"Show Subtitle\" name=\"showSubTitle\" checked=\"\">\n\t<input type=\"checkbox\" title=\"Show Text\" name=\"showText\" checked=\"\">\n\t<input type=\"checkbox\" title=\"Show Buttons\" name=\"showButtons\" checked=\"\">\n\t<!-- Background -->\n\t<input type=\"color\" title=\"Background Color\" name=\"bg\" value=\"#ffffff\">\n\t<input type=\"checkbox\" title=\"Show BG Figures\" name=\"bgFigures\" checked=\"\">\n\t<!-- Select Figure -->\n\t<select title=\"Select Figure:\" name=\"figure\" condition=\"bgFigures\">\n\t\t<option value=\"1\">Circle</option>\n\t\t<option value=\"2\" selected=\"\">Rectangle</option>\n\t\t<option value=\"3\">Diagonal</option>\n\t</select>\n\t<!-- Figure Circle -->\n\t<input type=\"range\" inline=\"\" title=\"Circle Position X\" name=\"circlePosX\" min=\"-100\" max=\"100\" step=\"5\" value=\"-40\" condition=\"figure==1\">\n\t<input type=\"range\" inline=\"\" title=\"Circle Position Y\" name=\"circlePosY\" min=\"-100\" max=\"100\" step=\"5\" value=\"40\" condition=\"figure==1\">\n\t<input type=\"range\" inline=\"\" title=\"Circle Radius\" name=\"circleRadius\" min=\"100\" max=\"1600\" step=\"50\" value=\"1200\" condition=\"figure==1\">\n\t<input type=\"color\" title=\"Circle Color\" name=\"circleColor\" value=\"#eeeeee\" condition=\"figure==1\">\n\t<input type=\"checkbox\" title=\"Overflow Hidden\" name=\"overflow\" condition=\"figure==1\" checked=\"\">\n\t<!-- Figure Rectangle -->\n\t<input type=\"checkbox\" title=\"Width/Height\" name=\"directRect\" condition=\"figure==2\">\n\t<input type=\"checkbox\" title=\"Invert\" name=\"invertRect\" condition=\"figure==2\" checked=\"\">\n\t<input type=\"range\" inline=\"\" title=\"Size\" name=\"sizeRect\" min=\"0\" max=\"100\" step=\"5\" value=\"65\" condition=\"figure==2\">\n\t<input type=\"color\" title=\"Rectangle Color\" name=\"rectColor\" value=\"#eeeeee\" condition=\"figure==2\">\n\t<!-- Figure Diagonal -->\n\t<input type=\"range\" inline=\"\" title=\"Rotate Angle\" name=\"rotateAngle\" min=\"0\" max=\"360\" step=\"5\" value=\"45\" condition=\"figure==3\">\n\t<input type=\"checkbox\" title=\"Invert\" name=\"invertDiagonal\" condition=\"figure==3\" checked=\"\">\n\t<input type=\"range\" inline=\"\" title=\"Size\" name=\"sizeDiagonal\" min=\"0\" max=\"100\" step=\"5\" value=\"50\" condition=\"figure==3\">\n\t<input type=\"color\" title=\"Diagonal Color\" name=\"diagonalColor\" value=\"#eeeeee\" condition=\"figure==3\">\n\t<!-- End block parameters -->\n\t</mbr-parameters>\n\t<div class=\"figure\"></div>\n\t<div class=\"container\">\n\t\t<div class=\"mbr-row\">\n\t\t\t<div class=\"mbr-col-sm-12 mbr-col-lg-6 mbr-col-md-12 text-block\">\n\t\t\t\t<h5 class=\"mbr-section-subtitle mbr-fonts-style mbr-black mbr-bold\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-section-subtitle\" mbr-if=\"showSubTitle\">\n\t\t\t\tAbout Us\n\t\t\t\t</h5>\n\t\t\t\t<h4 class=\"mbr-section-title mbr-fonts-style mbr-bold mbr-black\" mbr-theme-style=\"display-5\" data-app-selector=\".mbr-section-title\" mbr-if=\"showTitle\">\n\t\t\t\tWhiteAMP\n\t\t\t\t</h4>\n\t\t\t\t<p class=\"mbr-fonts-style mbr-text mbr-black\" mbr-theme-style=\"display-6\" data-app-selector=\".mbr-text, .mbr-section-btn\" mbr-if=\"showText\">\n\t\t\t\t\tPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec auctor orci odio. Curabitur et tempus risus. Aliquam dignissim purus non finibus elementum.\n\t\t\t\t</p>\n\t\t\t\t<div mbr-buttons=\"\" class=\"mbr-section-btn\" mbr-theme-style=\"display-4\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\"><a class=\"btn-with-line text-black mbr-bold\" href=\"https://mobirise.com\">\n\t\t\t\t\t\t<span>\n\t\t\t\t\t\t\tLEARN MORE\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</a></div>\n\t\t\t</div>\n\t\t\t<div class=\"mbr-col-lg-6 mbr-col-md-12 mbr-col-sm-12\">\n\t\t\t\t<div class=\"image\">\n\t\t\t\t\t<amp-img src=\"@PROJECT_PATH@/assets/images/background2.jpg\" layout=\"responsive\" width=\"903.147853736089\" height=\"600\" alt=\"Mobirise\">\n\t\t\t\t\t\t<div placeholder=\"\">\n\t\t\t\t\t\t\t<div class=\"mobirise-spinner\">\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t\t<em></em>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/background2.jpg\" alt=\"Mobirise\">\n\t\t\t\t\t</amp-img>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</section>",
+          "_cid": "qSHgFKRhZg",
+          "_anchor": "about1-f0",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        }
+      ]
+    }
+  }
+}
